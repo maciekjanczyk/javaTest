@@ -30,4 +30,12 @@ public class Rot13EncoderTest {
         assertThat(encryptedText).isEqualTo("klm");
     }
 
+    @Test(expected = EncodingException.class)
+    public void should_throw_error_when_char_is_unrecognized() {
+        Rot13Encoder encoder = new Rot13Encoder();
+
+        String encryptedText=encoder.encrypt("xyz");
+        assertThat(encryptedText).isEqualTo("klm");
+    }
+
 }
