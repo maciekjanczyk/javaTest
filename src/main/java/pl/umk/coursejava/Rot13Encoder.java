@@ -12,13 +12,13 @@ public class Rot13Encoder {
     public static final List<Character> ALPHABET=
             Lists.charactersOf("abcdefghijklmnopqrstuvwxyz");
 
-    public String encrypt(String abc) {
+    public String encrypt(String abc) throws UnrecognizedCharException {
 
-        // Praca domowa :
-        //
         String result="";
 
         for(Character c : abc.toCharArray()) {
+            if(!Character.isLowerCase(c))
+                throw new UnrecognizedCharException();
             Integer position = ALPHABET.indexOf(c);
             result+=ALPHABET.get((position+13)%26);
         }
